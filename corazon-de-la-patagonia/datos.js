@@ -150,7 +150,7 @@ window.DATOS = {
  "jingle": {
   "genero": "Chamamé-pop patagónico · acordeón, guitarra y un latido final",
   "letra": "Del viento y del río, de manos de aquí…\nlo hecho en Coyhaique late por ti.\nCompra lo nuestro, lleva un pedazo de sur:\nCorazón de la Patagonia… ¡late en ti!",
-  "audio": "jingle.m4a"
+  "audio": "jingle.mp3"
  },
  "imagenes": [
   [

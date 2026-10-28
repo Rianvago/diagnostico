@@ -148,7 +148,7 @@ window.DATOS = {
  "jingle": {
   "genero": "Folk patagónico · guitarra criolla, acordeón y cierre coral",
   "letra": "Mármol que brilla en el lago azul,\nhielo milenario frente a ti…\nQueulat te llama, Aysén es tu luz,\n¡con Turismo Burgos, tu aventura empieza aquí!",
-  "audio": "jingle.m4a"
+  "audio": "jingle.mp3"
  },
  "imagenes": [
   [

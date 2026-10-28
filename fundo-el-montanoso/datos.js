@@ -151,7 +151,7 @@ window.DATOS = {
  "jingle": {
   "genero": "Chamamé o ranchera patagónica · acordeón, guitarra y kultrún",
   "letra": "Sube al caballo, prende el fogón,\nen Mano Negra late el corazón.\nFundo El Montañoso, ven a vivirlo:\nla forma de vivir y ser Patagonia.",
-  "audio": "jingle.m4a"
+  "audio": "jingle.mp3"
  },
  "imagenes": [
   [

@@ -157,7 +157,7 @@ window.DATOS = {
  "jingle": {
   "genero": "Chamamé · voz cálida de mujer, cierre con el sonido de la bombilla",
   "letra": "Al amanecer, se calienta el agua…\nel primer mate te dice: estás en casa.\nLagos, mármol y viento del sur,\nMate Che, lo indómito de la Patagonia… ¡y tú!",
-  "audio": "jingle.m4a"
+  "audio": "jingle.mp3"
  },
  "imagenes": [
   [
