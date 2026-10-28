@@ -87,7 +87,7 @@ function radialSVG() {
   let k = 0;
   return `<svg viewBox="0 0 320 320" role="img" aria-label="${esc(D.grafico.titulo)}">` +
     filas.map(([nombre, v, self], i) => {
-      const r = 140 - i * 30, color = self ? "#FFE100" : TONOS[k++], a1 = Math.max(v / max * span, 0.01);
+      const r = 140 - i * 30, color = self ? "#D9A955" : TONOS[k++], a1 = Math.max(v / max * span, 0.01);
       const [lx, ly] = pt(c, r, 0);
       return `<g class="rb" data-i="${i}" tabindex="0" role="button" aria-label="${esc(nombre)}: ${num(v)}">
         <path d="${arc(c, r, 0, span)}" fill="none" stroke="#F3F3EF" stroke-width="20" stroke-linecap="round"/>
@@ -131,7 +131,7 @@ function efectoSVG(p, i) {
 }
 
 // ---------- Pack: dona de precios ----------
-const PACK_COL = ["#FFE100", "#F2F2EF", "#8C8C85", "#56564F"];
+const PACK_COL = ["#D9A955", "#F2F2EF", "#8C8C85", "#56564F"];
 const items = D.pack.items.filter(i => i[1] > 0);
 const total = items.reduce((a, i) => a + i[1], 0);
 function packSVG() {
@@ -149,7 +149,7 @@ function relojSVG() {
   const f = Math.min(1, quedan / totalDias);
   return { quedan, svg: `<svg viewBox="0 0 74 74" aria-hidden="true">
     <circle cx="37" cy="37" r="31" fill="none" stroke="#3A3A38" stroke-width="7"/>
-    <circle cx="37" cy="37" r="31" fill="none" stroke="#FFE100" stroke-width="7" stroke-linecap="round" transform="rotate(-90 37 37)"
+    <circle cx="37" cy="37" r="31" fill="none" stroke="#D9A955" stroke-width="7" stroke-linecap="round" transform="rotate(-90 37 37)"
       pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" data-to="${100 - f * 100}" class="draw"/>
     <text x="37" y="35" text-anchor="middle" dominant-baseline="central" fill="#fff" font-size="22" font-weight="700" font-family="Jost">${quedan}</text>
     <text x="37" y="53" text-anchor="middle" fill="#B9B9B4" font-size="8">días</text>
@@ -223,7 +223,7 @@ document.getElementById("app").innerHTML = `
     <h2>${esc(D.grafico.titulo)}</h2>
     <p class="hint">Toca un anillo</p>
     <div class="radial">${radialSVG()}</div>
-    <ul class="legend" id="rlegend">${(() => { let k = 0; return D.grafico.filas.map(([n, v, self], i) => `<li data-i="${i}"><span class="dot" style="background:${self ? "#FFE100" : TONOS[k++]};${self ? "box-shadow:0 0 0 1.5px #161616" : ""}"></span><span class="${self ? "self" : ""}">${esc(n)}</span><span class="mono">${num(v)}</span></li>`).join(""); })()}</ul>
+    <ul class="legend" id="rlegend">${(() => { let k = 0; return D.grafico.filas.map(([n, v, self], i) => `<li data-i="${i}"><span class="dot" style="background:${self ? "#D9A955" : TONOS[k++]};${self ? "box-shadow:0 0 0 1.5px #161616" : ""}"></span><span class="${self ? "self" : ""}">${esc(n)}</span><span class="mono">${num(v)}</span></li>`).join(""); })()}</ul>
     <p class="src">Fuente: ${esc(D.grafico.fuente)}</p>
     <div class="rivales">${D.competencia.map(([n, t]) => `<div class="rival"><b>${esc(n)}</b><p>${esc(t)}</p></div>`).join("")}</div>
   </section>
@@ -273,9 +273,9 @@ document.getElementById("app").innerHTML = `
       <button class="play" id="play" aria-label="Reproducir jingle">
         <svg viewBox="0 0 120 120" aria-hidden="true">
           <circle cx="60" cy="60" r="54" fill="none" stroke="#F3F3EF" stroke-width="8"/>
-          <circle id="prog" cx="60" cy="60" r="54" fill="none" stroke="#FFE100" stroke-width="8" stroke-linecap="round" transform="rotate(-90 60 60)" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+          <circle id="prog" cx="60" cy="60" r="54" fill="none" stroke="#D9A955" stroke-width="8" stroke-linecap="round" transform="rotate(-90 60 60)" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
           <circle cx="60" cy="60" r="42" fill="#161616"/>
-          <path id="picon" d="M52 42 L80 60 L52 78 Z" fill="#FFE100"/>
+          <path id="picon" d="M52 42 L80 60 L52 78 Z" fill="#D9A955"/>
         </svg></button>
       <div><b>Jingle original para ustedes</b><span id="ptime">Toca para escuchar</span>
         <div class="eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
