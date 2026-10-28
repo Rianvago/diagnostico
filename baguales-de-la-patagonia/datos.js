@@ -147,7 +147,7 @@ window.DATOS = {
  "jingle": {
   "genero": "Folk patagónico · galope suave en 6/8, cierre con relincho",
   "letra": "Cascadas que cantan, un puente de fuego,\nglaciares que miran pasar el viento…\nLibre como un bagual, ven a Puerto Aysén:\nBaguales de la Patagonia, ¡te pasamos a buscar!",
-  "audio": null
+  "audio": "jingle.m4a"
  },
  "imagenes": [
   [

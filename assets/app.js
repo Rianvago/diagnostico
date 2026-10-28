@@ -268,10 +268,20 @@ document.getElementById("app").innerHTML = `
 
   ${D.jingle ? `<section class="card rv">
     <span class="label">Su jingle</span>
-    <h2>Así podría sonar ${esc(D.nombre)}</h2>
-    <div class="jingle"><div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="g">${esc(D.jingle.genero)}</div><p>${esc(D.jingle.letra)}</p>
-      ${D.jingle.audio ? `<audio controls preload="none" src="${esc(D.jingle.audio)}"></audio>` : ""}</div>
+    <h2>${D.jingle.audio ? `Escuchen cómo suena ${esc(D.nombre)}` : `Así podría sonar ${esc(D.nombre)}`}</h2>
+    ${D.jingle.audio ? `<div class="player">
+      <button class="play" id="play" aria-label="Reproducir jingle">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="54" fill="none" stroke="#F3F3EF" stroke-width="8"/>
+          <circle id="prog" cx="60" cy="60" r="54" fill="none" stroke="#FFE100" stroke-width="8" stroke-linecap="round" transform="rotate(-90 60 60)" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+          <circle cx="60" cy="60" r="42" fill="#161616"/>
+          <path id="picon" d="M52 42 L80 60 L52 78 Z" fill="#FFE100"/>
+        </svg></button>
+      <div><b>Jingle original para ustedes</b><span id="ptime">Toca para escuchar</span>
+        <div class="eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+      <audio id="aud" preload="metadata" src="${esc(D.jingle.audio)}"></audio>
+    </div>` : ""}
+    <div class="jingle"><div class="g">${esc(D.jingle.genero)}</div><p>${esc(D.jingle.letra)}</p></div>
   </section>` : ""}
 
   <section class="card rv">
@@ -347,6 +357,24 @@ pli.forEach(l => l.addEventListener("click", () => {
   pli.forEach(x => x.classList.toggle("on", x === l));
   psegs.forEach((g, j) => { g.style.opacity = i < 0 || j === i ? 1 : .3; g.style.transition = "opacity .25s"; });
 }));
+
+// Reproductor circular del jingle
+const aud = document.getElementById("aud");
+if (aud) {
+  const play = document.getElementById("play"), prog = document.getElementById("prog"), picon = document.getElementById("picon");
+  const ptime = document.getElementById("ptime"), eq = document.getElementById("eq");
+  const mmss = t => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
+  const PLAY = "M52 42 L80 60 L52 78 Z", PAUSA = "M48 42 h9 v36 h-9 Z M63 42 h9 v36 h-9 Z";
+  play.addEventListener("click", () => aud.paused ? aud.play() : aud.pause());
+  aud.addEventListener("play", () => { picon.setAttribute("d", PAUSA); eq.classList.add("on"); play.setAttribute("aria-label", "Pausar jingle"); });
+  aud.addEventListener("pause", () => { picon.setAttribute("d", PLAY); eq.classList.remove("on"); play.setAttribute("aria-label", "Reproducir jingle"); });
+  aud.addEventListener("timeupdate", () => {
+    const d = aud.duration || 1;
+    prog.style.strokeDashoffset = 100 - aud.currentTime / d * 100;
+    ptime.textContent = `${mmss(aud.currentTime)} / ${mmss(d)}`;
+  });
+  aud.addEventListener("ended", () => { prog.style.strokeDashoffset = 100; });
+}
 
 // Barra fija de WhatsApp: aparece al bajar, se esconde sobre el pack
 const sticky = document.getElementById("sticky"), pack = document.getElementById("pack");

@@ -151,7 +151,7 @@ window.DATOS = {
  "jingle": {
   "genero": "Folk patagónico · chamamé austral en 6/8, acordeón y bombo legüero",
   "letra": "Entre fiordos y montañas, donde el viento aprende a navegar,\nChacabuco abre sus brazos, la Patagonia sale a mar.\nDe Aysén al mundo entero, de mi puerto a tu lugar…\nEmporcha: uniendo la Patagonia al mundo.",
-  "audio": null
+  "audio": "jingle.m4a"
  },
  "imagenes": [
   [
